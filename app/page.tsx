@@ -107,7 +107,7 @@ const DecryptingReveal = ({ result }: { result: Volunteer }) => {
     return () => clearInterval(scrambleInterval);
   }, [phase, result]);
 
-  const triggerMatrixConfetti = (particleCount: number, bursts: number) => {
+const triggerMatrixConfetti = (particleCount: number, bursts: number) => {
     const colors = ['#00FF00', '#003300', '#33FF33', '#FFFFFF'];
     let count = 0;
     const interval = setInterval(() => {
@@ -115,8 +115,7 @@ const DecryptingReveal = ({ result }: { result: Volunteer }) => {
         particleCount,
         spread: 100,
         origin: { y: 0.6 },
-        colors: colors,
-        fontFamily: 'monospace'
+        colors: colors // <-- Removed the comma and fontFamily line here
       });
       count++;
       if (count >= bursts) clearInterval(interval);
