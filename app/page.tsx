@@ -107,7 +107,7 @@ const DecryptingReveal = ({ result }: { result: Volunteer }) => {
     return () => clearInterval(scrambleInterval);
   }, [phase, result]);
 
-const triggerMatrixConfetti = (particleCount: number, bursts: number) => {
+  const triggerMatrixConfetti = (particleCount: number, bursts: number) => {
     const colors = ['#00FF00', '#003300', '#33FF33', '#FFFFFF'];
     let count = 0;
     const interval = setInterval(() => {
@@ -115,7 +115,7 @@ const triggerMatrixConfetti = (particleCount: number, bursts: number) => {
         particleCount,
         spread: 100,
         origin: { y: 0.6 },
-        colors: colors // <-- Removed the comma and fontFamily line here
+        colors: colors
       });
       count++;
       if (count >= bursts) clearInterval(interval);
@@ -296,7 +296,7 @@ export default function NSSHoursTracker() {
 
         <form onSubmit={handleSearch} className="relative group flex flex-col gap-2">
           <div className="flex bg-black border border-green-500/50 shadow-[0_0_10px_rgba(0,255,0,0.1)] focus-within:shadow-[0_0_15px_rgba(0,255,0,0.4)] transition-shadow">
-            <div className="bg-green-950/30 px-4 flex items-center justify-center border-r border-green-500/50 text-green-500">
+            <div className="bg-green-950/30 px-3 md:px-4 flex items-center justify-center border-r border-green-500/50 text-green-500 font-bold">
               {'>_'}
             </div>
             <input
@@ -304,12 +304,17 @@ export default function NSSHoursTracker() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="ENTER_QUERY..."
-              className="w-full bg-transparent py-4 px-4 text-green-400 placeholder-green-800 focus:outline-none uppercase"
+              className="w-full bg-transparent py-4 px-3 md:px-4 text-green-400 placeholder-green-800 focus:outline-none uppercase min-w-0"
               spellCheck={false}
               autoComplete="off"
             />
+            <button 
+              type="submit" 
+              className="px-4 md:px-6 bg-green-950/50 text-green-500 hover:bg-green-500 hover:text-black border-l border-green-500/50 font-bold tracking-widest transition-colors flex items-center justify-center text-xs md:text-sm"
+            >
+              EXECUTE
+            </button>
           </div>
-          <button type="submit" className="hidden" />
         </form>
 
         <AnimatePresence mode="wait">
